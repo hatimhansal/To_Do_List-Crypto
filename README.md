@@ -179,7 +179,7 @@ This project helped me practice:
 * Python modules
 * Using external libraries
 * Introduction to symmetric encryption
-* Git and GitHub
+
 
 ---
 
