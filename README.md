@@ -1,25 +1,19 @@
-# 🔐 To-Do List Crypto
+# 📝 To-Do List — Python
 
-A simple **To-Do List application with data encryption**, written in Python.
+A simple **To-Do List application written in Python**.
 
-This project combines basic task management with **cryptography** to protect stored data.
-
-It was created as a practical project to learn Python, file handling, JSON, encryption, and basic data security.
-
-> ⚠️ **Disclaimer:** This project is intended for educational purposes. It should not be considered a production-ready security application.
+This project was created to practice Python fundamentals, JSON file handling, task management, and the first steps toward integrating cryptography with a Python application.
 
 ---
 
-## 📌 Features
+## 📌 Project Overview
 
-* ✅ Create tasks
-* 📋 View tasks
-* ✏️ Manage tasks
-* 🗑️ Delete tasks
-* 💾 Store task data locally
-* 🔐 Encrypt sensitive stored data
-* 🔓 Decrypt data when the application needs to read it
-* 🐍 Built with Python
+The project contains two Python implementations:
+
+* `To_Do_list.py` — basic To-Do List implementation.
+* `to-do-list-crypto.py` — To-Do List version with initial work toward integrating **Fernet cryptography**.
+
+The current version focuses mainly on **task management and JSON data storage**. Cryptography is currently being explored and is **not fully implemented yet**.
 
 ---
 
@@ -37,69 +31,91 @@ To_Do_List-Crypto/
 
 ---
 
-## 🐍 To_Do_list.py
+## ⚙️ Features
 
-`To_Do_list.py` contains the basic To-Do List functionality.
+The To-Do List allows you to:
 
-It focuses on managing tasks and practicing Python fundamentals such as:
+* ➕ Add a task
+* 📋 Display tasks
+* 🗑️ Delete a task
+* 🆔 Assign an ID to each task
+* 📝 Store a task title
+* 📄 Store a task body
+* 🔄 Manage the task status
+* 💾 Store data using JSON
 
-* Variables
-* Lists
-* Functions
-* Loops
-* Conditions
-* User input
-* File handling
+A task follows a structure similar to:
 
-Run it with:
-
-```bash
-python To_Do_list.py
+```json
+{
+    "id": 1,
+    "title": "Learn Python",
+    "body": "Practice Python functions",
+    "status": "pending"
+}
 ```
 
 ---
 
-## 🔐 to-do-list-crypto.py
+## 🐍 `To_Do_list.py`
 
-`to-do-list-crypto.py` is the security-focused version of the project.
+This is the basic version of the application.
 
-It adds encryption to protect the stored task data.
+It uses Python's built-in `json` module to work with task data.
 
-The general workflow is:
+The program provides operations for:
 
 ```text
-User
- │
- ▼
-Create / Modify Task
- │
- ▼
-Task Data
- │
- ▼
-Encryption 🔐
- │
- ▼
-Encrypted Storage
- │
- ▼
-Decryption 🔓
- │
- ▼
-Application
+Afficher → Display tasks
+Add      → Add a task
+Delete   → Delete a task
 ```
 
-This version was created to understand how encryption can be integrated into a Python application.
+The data is designed to be stored in a JSON file.
+
+---
+
+## 🔐 `to-do-list-crypto.py`
+
+This version is an experiment toward adding cryptography to the application.
+
+It imports:
+
+```python
+from cryptography.fernet import Fernet
+```
+
+Fernet is a symmetric encryption system provided by the Python `cryptography` library.
+
+The project is currently at the **learning/implementation stage** for this part. The encryption functionality is not yet fully integrated into the task storage workflow.
+
+---
+
+## 🔄 How the Application Works
+
+The basic workflow is:
+
+```text
+            To-Do List
+                │
+       ┌────────┼────────┐
+       ▼        ▼        ▼
+      Add    Afficher   Delete
+       │        │        │
+       └────────┼────────┘
+                ▼
+             JSON
+```
+
+The application manages tasks and stores their information in JSON format.
 
 ---
 
 ## 🛠️ Technologies
 
 * **Python 3**
-* JSON
-* File handling
-* `cryptography`
-* Encryption / Decryption
+* **JSON**
+* **Cryptography / Fernet** *(experimental)*
 
 ---
 
@@ -117,13 +133,23 @@ Enter the project:
 cd To_Do_List-Crypto
 ```
 
-Go to the project directory:
+Go to the Python files:
 
 ```bash
 cd To_Do_List
 ```
 
-Install the required dependency:
+### Basic version
+
+Run:
+
+```bash
+python To_Do_list.py
+```
+
+### Crypto version
+
+First install the `cryptography` package:
 
 ```bash
 pip install cryptography
@@ -137,90 +163,51 @@ python to-do-list-crypto.py
 
 ---
 
-## 🔑 Encryption Concept
-
-The project uses encryption to make stored data unreadable without the required key.
-
-Instead of storing data like:
-
-```text
-Task: Learn Python
-Task: Study Networking
-Task: Build a project
-```
-
-the stored content is encrypted.
-
-Conceptually:
-
-```text
-Plain Data
-    │
-    ▼
-Encryption 🔐
-    │
-    ▼
-Encrypted Data
-    │
-    ▼
-Storage
-```
-
-When the application needs the data:
-
-```text
-Encrypted Data
-    │
-    ▼
-Decryption 🔓
-    │
-    ▼
-Original Data
-```
-
----
-
 ## 📚 What I Learned
 
 This project helped me practice:
 
-* Python programming
-* Functions
+* Python functions
+* Variables and data types
 * Lists and dictionaries
+* Conditions
+* Loops
+* User input
 * JSON
-* Reading and writing files
-* Exception handling
-* Working with external Python libraries
-* Encryption and decryption
-* Basic data protection
+* Reading and writing data
+* Basic CRUD operations
+* Python modules
+* Using external libraries
+* Introduction to symmetric encryption
 * Git and GitHub
 
 ---
 
 ## 🔮 Future Improvements
 
-Possible improvements:
+The project can be improved by adding:
 
-* [ ] Add a graphical interface
+* [ ] Fully implement Fernet encryption
+* [ ] Encrypt the stored task data
+* [ ] Secure encryption-key management
+* [ ] Add task editing
+* [ ] Add task completion functionality
 * [ ] Add task priorities
 * [ ] Add task deadlines
-* [ ] Add task categories
-* [ ] Add search functionality
-* [ ] Improve encryption key management
-* [ ] Add password-based authentication
-* [ ] Add encrypted backup
+* [ ] Improve input validation
 * [ ] Improve error handling
+* [ ] Add a graphical interface
 * [ ] Add automated tests
 
 ---
 
-## 🔐 Security Note
+## ⚠️ Current Status
 
-Encryption helps protect stored information, but **key management is extremely important**.
+This is a **learning project**.
 
-If the encryption key is lost, encrypted data may no longer be recoverable.
+The To-Do List functionality is implemented, while the cryptography part is currently being developed and explored.
 
-For real-world applications, additional security practices should be implemented before using the project to protect sensitive information.
+The project is **not intended to be a production-ready secure application**.
 
 ---
 
@@ -229,11 +216,10 @@ For real-world applications, additional security practices should be implemented
 **Hatim Hansal**
 
 GitHub:
-
 https://github.com/hatimhansal
 
 ---
 
-## ⭐ Project
+## ⭐ Support
 
-If you find this project useful for learning Python and basic cryptography, feel free to ⭐ the repository.
+If you find this project useful for learning Python, feel free to ⭐ the repository.
